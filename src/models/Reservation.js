@@ -5,22 +5,27 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    capacity: {
-        type: String,
+    bookingStart: {
+        type: Date,
         required: true
     },
-    equipment: {
-        type: String,
+    bookingEnd: {
+        type: Date,
         required: true
     },
-    disponibility: {
-        type: String,
+    startHour: {
+        type: Number,
         required: true
     },
-    isAdmin: {
-        type: Boolean,
+    duration: {
+        type: Number,
         default: false
-    }
+    },
+    meetingRoomId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'MeetingRoom',
+        required: true,
+      },
 })
 
 userSchema.virtual('id').get(function () {
