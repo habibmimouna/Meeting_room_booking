@@ -1,3 +1,3 @@
 module.exports = {
-    url:'mongodb+srv://<username>:<password>:@learning.eauwn.mongodb.net/ecommerce-api?retryWrites=true&w=majority'
+    url:'mongodb+srv://habibmim15:KmQ6DklxQcjiokG7@cluster0.xblbepg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
   };
