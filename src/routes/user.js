@@ -6,7 +6,7 @@ const router = express.Router();
 
 const User = require('../models/user');
 
-router.post('/', createUser);
+router.post('/create', createUser);
 router.get('/', async (req, res) =>{
     
     if(true) {

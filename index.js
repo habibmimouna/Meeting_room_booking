@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const userRoute = require("./src/routes/user");
+const reservationRoute = require("./src/routes/reservation");
+const meetingRoomRoute = require("./src/routes/meetingRoom");
+
 const dbConfig = require("./src/config/database.config");
 const mongoose = require("mongoose");
 const { createUser } = require("./src/controllers/userContoller");
@@ -10,7 +13,11 @@ PORT = 4200;
 
 app.use(bodyParser.json());
 app.use(`/users`, userRoute);
-app.post('/users/reg',createUser)
+app.post('/users/reg',createUser);
+app.use('/reservations',reservationRoute)
+app.use('/meeting-Rooms',meetingRoomRoute)
+
+
 app.use("/test", (req, res) => {
   res.send("hello");
 });
