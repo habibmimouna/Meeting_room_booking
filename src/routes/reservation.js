@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {createReservation,getAllReservations} = require('../controllers/reservationController');
+const authenticate = require('../middleware/auth');
 
-// Routes for reservation-related operations
-router.post('/reservations', createReservation);
+
+router.post('/reservations', authenticate,createReservation);
 router.get('/reservations', getAllReservations);
-// Add more routes for reservation CRUD operations as needed
+
 
 module.exports = router;
