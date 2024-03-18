@@ -1,8 +1,5 @@
-const MeetingRoom = require('../models/meetingRoom');
+const MeetingRoom = require("../models/meetingRoom");
 
-// Controller for meeting room-related operations
-
-// Create a new meeting room
 const createMeetingRoom = async (req, res) => {
   try {
     const newMeetingRoom = await MeetingRoom.create(req.body);
@@ -12,7 +9,6 @@ const createMeetingRoom = async (req, res) => {
   }
 };
 
-// Get all meeting rooms
 const getAllMeetingRooms = async (req, res) => {
   try {
     const meetingRooms = await MeetingRoom.find();
@@ -22,9 +18,25 @@ const getAllMeetingRooms = async (req, res) => {
   }
 };
 
+const updateMeetingRoom = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedMeetingRoom = await MeetingRoom.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true }
+    );
+    if (!updatedMeetingRoom) {
+      return res.status(404).json({ message: "Meeting room not found" });
+    }
+    res.json(updatedMeetingRoom);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 module.exports = {
   createMeetingRoom,
-  getAllMeetingRooms
-  // Add other controller functions here
+  getAllMeetingRooms,
+  updateMeetingRoom,
 };
