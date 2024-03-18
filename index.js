@@ -1,19 +1,21 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const userRoute = require("./src/routes/user");
+const userRoute = require("./src/routes/auth");
 const reservationRoute = require("./src/routes/reservation");
 const meetingRoomRoute = require("./src/routes/meetingRoom");
-
+const dotenv = require('dotenv');
 const dbConfig = require("./src/config/database.config");
 const mongoose = require("mongoose");
-const { createUser } = require("./src/controllers/userContoller");
+const { register ,login} = require("./src/controllers/authContoller");
 const app = express();
 
 PORT = 4200;
+dotenv.config()
 
 app.use(bodyParser.json());
 app.use(`/users`, userRoute);
-app.post('/users/reg',createUser);
+app.use('/auth/register',register);
+app.use('/auth/login',login);
 app.use('/reservations',reservationRoute)
 app.use('/meeting-Rooms',meetingRoomRoute)
 
