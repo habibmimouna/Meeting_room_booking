@@ -10,7 +10,7 @@ const register = async (req, res) => {
     const user = new User({ ...req.body,
     password:hashedPassword });
     await user.save();
-    res.status(201).send("User registered successfully");
+    res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -18,14 +18,14 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username: username });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(404).send("user not found");
+      return res.status(404).json({message:"user not found"});
     }
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) {
-      return res.status(401).send("invalid password");
+      return res.status(401).json({message:"invalid password" });
     }
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
     res.send({ token: token });
