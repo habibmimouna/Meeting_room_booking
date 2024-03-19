@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const bodyParser = require("body-parser");
 const userRoute = require("./src/routes/auth");
 const reservationRoute = require("./src/routes/reservation");
@@ -10,6 +11,7 @@ const { register, login } = require("./src/controllers/authContoller");
 const app = express();
 
 dotenv.config();
+app.use(cors({origin: 'http://localhost:4200'}));
 
 app.use(bodyParser.json());
 app.use(`/users`, userRoute);
