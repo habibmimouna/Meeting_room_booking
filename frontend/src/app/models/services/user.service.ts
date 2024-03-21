@@ -7,7 +7,7 @@ import { User } from '../user';
   providedIn: 'root',
 })
 export class UserService {
-  private baseURL = 'http://localhost:5000/auth';
+  private baseURL = 'http://localhost:5000/auth/';
   private authBaseURL = 'http://localhost:5000/auth';
 
   private readonly USER_KEY = 'currentUser';
@@ -15,7 +15,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   getUsersList(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.baseURL}`);
+    return this.httpClient.get<User[]>(`${this.baseURL+ 'getAll'}`);
   }
 
   createUser(user: User): Observable<Object> {

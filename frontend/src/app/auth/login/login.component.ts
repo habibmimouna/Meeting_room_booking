@@ -39,7 +39,7 @@ export class LoginComponent {
               
               this.router.navigate(['admin/edit-users']);
             } else {
-              this.router.navigate(['user/catalog']);
+              this.router.navigate(['dash']);
             }
           }
         });
