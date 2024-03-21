@@ -14,7 +14,8 @@ dotenv.config();
 app.use(cors({origin: 'http://localhost:4200'}));
 
 app.use(bodyParser.json());
-app.use(`/users`, userRoute);
+app.use("/auth", userRoute);
+
 app.use("/auth/register", register);
 app.use("/auth/login", login);
 app.use("/reservations", reservationRoute);

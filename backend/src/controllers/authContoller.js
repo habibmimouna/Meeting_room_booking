@@ -33,8 +33,17 @@ const login = async (req, res) => {
     res.status(400).send(err.message);
   }
 };
+const getAllUsers = async (req, res) => {
+  try {
+    const userList = await User.find();
+    res.status(200).json(userList);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
 
 module.exports = {
   register,
   login,
+  getAllUsers,
 };
