@@ -1,25 +1,12 @@
 <div >
   <app-navbar></app-navbar>
+  <app-reservation-table></app-reservation-table>
   <div class="container">
     <div>
-      <div class="meetingRoom-list">
-        <div class="meetingRoom-list-column-headers">
-          
-          <div class="header-item">Name</div>
-          <div class="header-item">Capacity</div>
-          <div class="header-item">Equipment</div>
-          <div class="header-item">Location</div>
-        </div>
-
-        <div *ngFor="let meetingRoom of meetingRooms" class="meetingRoom">
-         
-          <p class="data">{{ meetingRoom.name }}</p>
-          <p class="data">{{ meetingRoom.capacity }}</p>
-          <p class="data">{{ meetingRoom.equipment }}</p>
-          <p class="data">{{ meetingRoom.location }}</p>
-        </div>
+      
+      <div class="calendar">
+        
       </div>
-      <div class="calendar"></div>
     </div>
   </div>
 </div>
