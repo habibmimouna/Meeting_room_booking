@@ -37,7 +37,7 @@ export class LoginComponent {
             if (user.isAdmin  ){ // Replace 'admin' with the actual value for admin role
               
               
-              this.router.navigate(['admin/edit-users']);
+              this.router.navigate(['/AdminReservations']);
             } else {
               this.router.navigate(['dash']);
             }
