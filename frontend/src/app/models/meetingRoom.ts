@@ -1,8 +1,7 @@
 export interface MeetingRoom {
     _id:number|null;
-    id:number|null ;
     name:string;
-    capacity: string ;
+    capacity: number|null ;
     location: string ;
     equipment:string;
 }

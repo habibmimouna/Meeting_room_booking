@@ -1,0 +1,60 @@
+<div>
+  <app-navbar></app-navbar>
+  <div class="add-meeting-room">
+    <form (ngSubmit)="onBtnAddClicked()" class="add-meetingroom-container">
+    <tr class="">
+      
+      <td>
+        <input
+        placeholder="Name"
+        type="text"
+        id="name"
+        [(ngModel)]="newMeetingRoom.name"
+        name="name"
+        />
+      </td>
+      <td>
+        <input
+        placeholder="Capacity"
+        type="text"
+        id="capacity"
+        [(ngModel)]="newMeetingRoom.capacity"
+        name="capacity"
+        />
+      </td>
+      <td>
+        <input
+        placeholder="Equipment"
+        type="text"
+        id="equipment"
+        [(ngModel)]="newMeetingRoom.equipment"
+        name="username"
+        />
+      </td>
+      <td>
+        <input
+        placeholder="Location"
+        type="text"
+        id="location"
+        [(ngModel)]="newMeetingRoom.location"
+        name="location"
+        />
+      </td>
+      <td>
+        <button
+          class="btn btn-success fa fa-plus active"
+          type="submit"
+          >Add meeting room</button
+        >
+      </td>
+   
+    </tr>
+  </form>
+  </div>
+  <app-reservation-table></app-reservation-table>
+  <div class="container">
+    <div>
+      <div class="calendar"></div>
+    </div>
+  </div>
+</div>

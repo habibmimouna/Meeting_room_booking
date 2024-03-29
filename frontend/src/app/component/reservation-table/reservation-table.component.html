@@ -1,7 +1,7 @@
 <table class="container">
   <thead>
     <tr>
-      <th><h1>Id</h1></th>
+      
       <th><h1>name</h1></th>
       <th><h1>capacity</h1></th>
       <th><h1>equipment</h1></th>
@@ -11,12 +11,13 @@
   </thead>
   <tbody *ngFor="let meetingRoom of meetingRooms">
     <tr>
-      <td>{{ meetingRoom._id }}</td>
+      
       <td>{{ meetingRoom.name }}</td>
       <td>{{ meetingRoom.capacity }}</td>
       <td>{{ meetingRoom.equipment }}</td>
       <td>{{ meetingRoom.location }}</td>
-      <td><button onclick="">Reservation</button></td>
+      <td><button >Reservation</button></td>
     </tr>
   </tbody>
 </table>
+

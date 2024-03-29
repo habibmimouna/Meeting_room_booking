@@ -8,7 +8,7 @@ const {
 } = require("../controllers/meetingRoomController");
 
 router.get("/meeting-rooms", getAllMeetingRooms);
-router.post("/meeting-rooms", authenticate, createMeetingRoom);
+router.post("/meeting-rooms",authenticate ,createMeetingRoom);
 
 router.put("/meeting-rooms", authenticate, updateMeetingRoom);
 

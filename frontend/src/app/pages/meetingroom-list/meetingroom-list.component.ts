@@ -5,12 +5,13 @@ import { MeetingRoom } from '../../models/meetingRoom';
 import { NgFor } from '@angular/common';
 import { ReservationTableComponent } from '../../component/reservation-table/reservation-table.component';
 
+
 @Component({
   selector: 'app-reservations',
   standalone: true,
   imports: [NavbarComponent,ReservationTableComponent,NgFor],
-  templateUrl: './reservations.component.html',
-  styleUrl: './reservations.component.scss'
+  templateUrl: './meetingroom-list.component.html',
+  styleUrl: './meetingroom-list.component.scss'
 })
 export class ReservationsComponent {
   meetingRooms: MeetingRoom[] = []; 

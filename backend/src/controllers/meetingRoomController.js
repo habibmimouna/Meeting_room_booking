@@ -1,6 +1,7 @@
 const MeetingRoom = require("../models/meetingRoom");
 
 const createMeetingRoom = async (req, res) => {
+  console.log(req.body);
   try {
     const newMeetingRoom = await MeetingRoom.create(req.body);
     res.status(201).json(newMeetingRoom);
@@ -8,7 +9,7 @@ const createMeetingRoom = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-
+      
 const getAllMeetingRooms = async (req, res) => {
   try {
     const meetingRooms = await MeetingRoom.find();
