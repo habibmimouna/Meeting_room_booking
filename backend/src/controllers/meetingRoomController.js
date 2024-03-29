@@ -19,6 +19,19 @@ const getAllMeetingRooms = async (req, res) => {
   }
 };
 
+const getMeetingRoomById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const meetingRoom = await MeetingRoom.findById(id);
+    if (!meetingRoom) {
+      return res.status(404).json({ message: "Meeting room not found" });
+    }
+    res.json(meetingRoom);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 const updateMeetingRoom = async (req, res) => {
   const { id } = req.params;
   try {
@@ -39,5 +52,6 @@ const updateMeetingRoom = async (req, res) => {
 module.exports = {
   createMeetingRoom,
   getAllMeetingRooms,
+  getMeetingRoomById,
   updateMeetingRoom,
 };
