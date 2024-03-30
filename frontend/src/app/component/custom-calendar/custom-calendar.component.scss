@@ -1,0 +1,38 @@
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, calc(14.28% - 3px))); 
+    gap: 3px; 
+}
+.calendar-container {
+    margin-top: 10px; 
+    margin-left: 50px;
+    padding-bottom: 50px;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.month {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; 
+}
+
+.day {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.day:hover {
+    background-color: #ae2d2d; 
+}
+.tot{
+    display: flex;
+    justify-content: space-around;
+}

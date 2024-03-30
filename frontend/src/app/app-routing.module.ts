@@ -3,17 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DashComponent } from './pages/dash/dash.component';
-import { ReservationsComponent } from './pages/meetingroom-list/meetingroom-list.component';
-import { meetingRoomListAdminComponent } from './pages/meetingroom-list-admin/reservation-admin.component';
+import { meetingRoomListAdminComponent } from './pages/meetingroom-list-admin/meetingroom-list-admin.component';
 import { authGuard } from './auth/services/auth.guard';
+import { ReservationComponent } from './pages/reservation/reservation.component';
+import { meetingRoomListComponent } from './pages/meetingroom-list/meetingroom-list.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
     { path: 'auth/signup', component: RegisterComponent },
     { path: 'auth/login', component: LoginComponent},
     { path: 'dash', component: DashComponent,canActivate: [authGuard]},
-    { path: 'Reservations', component: ReservationsComponent,canActivate: [authGuard]},
-    { path: 'AdminReservations', component: meetingRoomListAdminComponent,canActivate: [authGuard]},
+    { path: 'meetingroom-list', component: meetingRoomListComponent,canActivate: [authGuard]},
+    { path: 'Admin-meetingroom-list', component: meetingRoomListAdminComponent,canActivate: [authGuard]},
+    { path: 'reservation/:id', component: ReservationComponent }
 
 
 ];

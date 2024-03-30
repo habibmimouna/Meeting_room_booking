@@ -31,6 +31,7 @@ export class meetingRoomListAdminComponent {
       
     }, (error) => {
       console.error('Error adding meeting room:', error);
+      alert("Oups problem adding meeting room ! try again later ")
     })
     
 }

@@ -1,0 +1,31 @@
+<div class="calendar-container">
+  <div>
+    <div class="month">
+      <button (click)="changeMonth(-1)">Previous Month</button>
+      <span>{{ selectedYear }} - {{ selectedMonth }}</span>
+      <button (click)="changeMonth(1)">Next Month</button>
+    </div>
+
+    <div class="month-grid">
+      <button
+        *ngFor="let day of daysInMonth"
+        class="day"
+        (click)="selectDay(day)"
+      >
+        {{ day.getDate() }}
+      </button>
+    </div>
+  </div>
+  <div class="hour-grid">
+    <div *ngFor="let hour of hoursOfDay" class="hour">
+      <input
+        type="checkbox"
+        [id]="hour"
+        [checked]="isSelectedHour(hour)"
+        (change)="toggleHour(hour)"
+      />
+      <label [for]="hour">{{ hour }}</label>
+    </div>
+    <button [disabled]="!hasCheckedHours" (click)="reserveHours()">Reserve</button>
+  </div>
+</div>

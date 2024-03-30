@@ -11,7 +11,7 @@ export class MeetingRoomService {
 
   constructor(private httpClient: HttpClient) {}
   createMeetingRoom(meetingRoom:MeetingRoom): Observable<Object> {
-    let currentToken = localStorage.getItem('userToken') || ""
+    let currentToken = localStorage.getItem('userToken') || "";
     const headers= new HttpHeaders().set('Authorization',currentToken);
     return this.httpClient.post(this.baseURL, meetingRoom, { headers: headers });
   }

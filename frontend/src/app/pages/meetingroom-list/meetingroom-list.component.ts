@@ -13,7 +13,7 @@ import { ReservationTableComponent } from '../../component/reservation-table/res
   templateUrl: './meetingroom-list.component.html',
   styleUrl: './meetingroom-list.component.scss'
 })
-export class ReservationsComponent {
+export class meetingRoomListComponent {
   meetingRooms: MeetingRoom[] = []; 
 
   constructor(private meetingRoomService:MeetingRoomService) {}
