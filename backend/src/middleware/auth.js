@@ -13,6 +13,7 @@ const authenticate = (req,res,next) =>{
     try {
         console.log(token);
         const tokenData = token.split(' ')[1];
+        console.log("testing ",tokenData);
         const decodedToken = jwt.verify(tokenData,process.env.JWT_SECRET);
         req.userId=decodedToken._id;
         console.log(req.userId);
