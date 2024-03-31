@@ -11,12 +11,12 @@ const reservationSchema = new mongoose.Schema({
     ref: 'MeetingRoom',
     required: true
   },
-  startTime: {
-    type: Date,
+  day: {
+    type: String,
     required: true
   },
-  endTime: {
-    type: Date,
+  reservedHours: {
+    type: [String], 
     required: true
   },
   purpose: {

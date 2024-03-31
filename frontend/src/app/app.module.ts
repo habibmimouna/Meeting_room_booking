@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { CustomCalendarComponent } from './component/custom-calendar/custom-calendar.component';
 
 
 
@@ -17,6 +18,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     LoginComponent,
     
     
+    
   
   ],
   imports: [
@@ -25,7 +27,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CustomCalendarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
