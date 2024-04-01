@@ -72,6 +72,7 @@ export class CustomCalendarComponent {
     const year = day.getFullYear();
     const formattedDate = `${month}-${dayOfMonth}-${year}`;
     this.selectedDay = formattedDate;
+    this.checkReservations(this.selectedDay);
   }
 
   generateHoursOfDay(): void {
@@ -105,6 +106,8 @@ export class CustomCalendarComponent {
     this.updateCheckedStatus();
     console.log(this.reservation);
     this.makeReservation();
+    window.alert('you have reserved successfully ');
+    window.location.reload();
   }
 
   makeReservation(): void {
@@ -137,5 +140,30 @@ export class CustomCalendarComponent {
       return null;
     }
   }
-  
+
+  async checkReservations(day: string): Promise<string[]> {
+    try {
+      const reservations = await this.reservationService
+        .getReservationList()
+        .toPromise();
+      if (!reservations) {
+        throw new Error('No reservations found.');
+      }
+      const arr: string[] = [];
+      for (let reservation of reservations) {
+        if (day === reservation.day) {
+          for (let reserveHour of reservation.reservedHours) {
+            if (!arr.includes(reserveHour)) {
+              arr.push(reserveHour);
+            }
+          }
+        }
+      }
+      console.log('5588 arr : ', arr);
+      return arr;
+    } catch (error) {
+      console.error('Error retrieving reservations:', error);
+      return []; 
+    }
+  }
 }

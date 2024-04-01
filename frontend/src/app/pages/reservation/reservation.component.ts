@@ -16,7 +16,7 @@ import { CustomCalendarComponent } from '../../component/custom-calendar/custom-
 export class ReservationComponent implements OnInit {
   meetingRoomId: number = 0;
   MeetingRoomDetails: MeetingRoom = {
-    _id: 'null',
+    
     name: '',
     capacity: 0,
     location: '',

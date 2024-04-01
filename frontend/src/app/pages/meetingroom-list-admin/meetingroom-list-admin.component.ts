@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class meetingRoomListAdminComponent {
    newMeetingRoom:MeetingRoom ={
-    _id:"",
     name:"",
     capacity: 0,
     location:"" ,
