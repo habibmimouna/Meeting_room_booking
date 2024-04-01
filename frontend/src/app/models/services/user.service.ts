@@ -26,7 +26,7 @@ export class UserService {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 
-  getUserById(id: number): Observable<User> {
+  getUserById(id: string): Observable<User> {
     return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   }
 

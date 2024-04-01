@@ -7,6 +7,7 @@ import { meetingRoomListAdminComponent } from './pages/meetingroom-list-admin/me
 import { authGuard } from './auth/services/auth.guard';
 import { ReservationComponent } from './pages/reservation/reservation.component';
 import { meetingRoomListComponent } from './pages/meetingroom-list/meetingroom-list.component';
+import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -15,7 +16,9 @@ const routes: Routes = [
     { path: 'dash', component: DashComponent,canActivate: [authGuard]},
     { path: 'meetingroom-list', component: meetingRoomListComponent,canActivate: [authGuard]},
     { path: 'Admin-meetingroom-list', component: meetingRoomListAdminComponent,canActivate: [authGuard]},
-    { path: 'reservation/:id', component: ReservationComponent }
+    { path: 'reservation/:id', component: ReservationComponent },
+    { path: 'Account', component: AccountComponent,canActivate: [authGuard]},
+
 
 
 ];

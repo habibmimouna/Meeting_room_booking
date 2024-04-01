@@ -1,5 +1,4 @@
 <div class="calendar-container">
-  
   <div>
     <div>
       give as the purpose of the reservation please :
@@ -25,7 +24,7 @@
   </div>
   <div class="hour-grid">
     <div>here are the available hours </div>
-    <div *ngFor="let hour of hoursOfDay" class="hour">
+    <div *ngFor="let hour of availableHours" class="hour">
       <input
         type="checkbox"
         [id]="hour"

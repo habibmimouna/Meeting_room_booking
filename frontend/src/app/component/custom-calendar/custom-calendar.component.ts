@@ -21,6 +21,8 @@ export class CustomCalendarComponent {
   selectedMonth: number = 0;
   daysInMonth: Date[] = [];
   hoursOfDay: string[] = [];
+  availableHours: string[] = [];
+
   selectedHours: string[] = [];
   hasCheckedHours: boolean = false;
   selectedDay: string = '';
@@ -106,7 +108,7 @@ export class CustomCalendarComponent {
     this.updateCheckedStatus();
     console.log(this.reservation);
     this.makeReservation();
-    window.alert('you have reserved successfully ');
+    window.alert('you have reserved successfully \nif you want to cancel or modify a reservation go to your account page ');
     window.location.reload();
   }
 
@@ -140,7 +142,18 @@ export class CustomCalendarComponent {
       return null;
     }
   }
-
+  getAvailableHours(hoursOfDay: string[], arr: string[]): string[] {
+    const availableHours: string[] = [];
+    for (const hour of hoursOfDay) {
+      if (!arr.includes(hour)) {
+        availableHours.push(hour);
+      }
+    }
+    if(availableHours.length==0){
+      alert('so sorry but this day is fully reserved !! \nchose another day or another meeting room we have plenty')
+    }
+    return availableHours;
+  }
   async checkReservations(day: string): Promise<string[]> {
     try {
       const reservations = await this.reservationService
@@ -159,7 +172,10 @@ export class CustomCalendarComponent {
           }
         }
       }
-      console.log('5588 arr : ', arr);
+      console.log('arr : ', arr);
+      this.availableHours = this.getAvailableHours(this.hoursOfDay, arr);
+
+      console.log('Available Hours:', this.availableHours);
       return arr;
     } catch (error) {
       console.error('Error retrieving reservations:', error);
