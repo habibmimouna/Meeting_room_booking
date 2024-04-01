@@ -28,7 +28,7 @@ export class CustomCalendarComponent {
   selectedDay: string = '';
   meetingRoomId: string = '';
   reservation: Reservation = {
-    id: 0,
+    _id: "",
     day: this.selectedDay,
     reservedHours: this.selectedHours,
     purpose: '',

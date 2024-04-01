@@ -1,9 +1,37 @@
 <div>
     <app-navbar></app-navbar>
     <div>
-        <p>Fullname: {{user.fullName}}</p>
-        <p>username: {{user.username}}</p>
-        <p>email: {{user.email}}</p>
-        <p>phone: {{user.phone}}</p>
+      <p>Fullname: {{ user.fullName }}</p>
+      <p>username: {{ user.username }}</p>
+      <p>email: {{ user.email }}</p>
+      <p>phone: {{ user.phone }}</p>
+      <p>phone: {{ user._id }}</p>
     </div>
-</div>
+    <div>
+      currently you have these reservations :
+      <table class="container">
+        <thead>
+          <tr>
+            <th><h1>Meeting room name</h1></th>
+            <th><h1>day of reservation</h1></th>
+            <th><h1>hours</h1></th>
+            <th><h1>purpose</h1></th>
+            <th><h1>Actions</h1></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let userReservation of userReservations">
+          <tr>
+            <td>{{ userReservation.meetingRoom }}</td>
+            <td>{{ userReservation.day }}</td>
+            <td>{{ userReservation.reservedHours }}</td>
+            <td>{{ userReservation.purpose }}</td>
+            <td>
+              <button (click)="deleteReservation(userReservation)">Delete</button>
+              <button>Modify</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

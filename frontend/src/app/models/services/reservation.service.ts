@@ -21,7 +21,7 @@ export class ReservationService {
     return this.httpClient.post(`${this.baseURL}`, reservation, { headers: headers });
   }
 
-  deleteReservation(id: number): Observable<Object> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  deleteReservation(id: string): Observable<Object> {
+    return this.httpClient.delete(this.baseURL, { body: { id } });
   }
 }
