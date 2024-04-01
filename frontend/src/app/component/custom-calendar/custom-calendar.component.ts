@@ -7,6 +7,7 @@ import { MeetingRoom } from '../../models/meetingRoom';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../models/services/user.service';
 import { User } from '../../models/user';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-custom-calendar',
@@ -28,7 +29,7 @@ export class CustomCalendarComponent {
   selectedDay: string = '';
   meetingRoomId: string = '';
   reservation: Reservation = {
-    _id: "",
+    id: 0,
     day: this.selectedDay,
     reservedHours: this.selectedHours,
     purpose: '',
@@ -106,10 +107,13 @@ export class CustomCalendarComponent {
       this.reservation.meetingRoom = params['id'];
     });
     this.updateCheckedStatus();
-    console.log(this.reservation);
+    console.log('test:', this.reservation);
     this.makeReservation();
-    window.alert('you have reserved successfully \nif you want to cancel or modify a reservation go to your account page ');
+    window.alert(
+      'you have reserved successfully \nif you want to cancel or modify a reservation go to your account page '
+    );
     window.location.reload();
+
   }
 
   makeReservation(): void {
@@ -149,8 +153,10 @@ export class CustomCalendarComponent {
         availableHours.push(hour);
       }
     }
-    if(availableHours.length==0){
-      alert('so sorry but this day is fully reserved !! \nchose another day or another meeting room we have plenty')
+    if (availableHours.length == 0) {
+      alert(
+        'so sorry but this day is fully reserved !! \nchose another day or another meeting room we have plenty'
+      );
     }
     return availableHours;
   }
@@ -168,6 +174,7 @@ export class CustomCalendarComponent {
           for (let reserveHour of reservation.reservedHours) {
             if (!arr.includes(reserveHour)) {
               arr.push(reserveHour);
+              console.log();
             }
           }
         }
@@ -179,7 +186,7 @@ export class CustomCalendarComponent {
       return arr;
     } catch (error) {
       console.error('Error retrieving reservations:', error);
-      return []; 
+      return [];
     }
   }
 }

@@ -36,10 +36,9 @@ const updateReservation = async (req, res) => {
 
 
 const deleteReservation = async (req, res) => {
-  const { id } = req.body;
-  console.log(req.body);
+ 
   try {
-    const deletedReservation = await Reservation.findByIdAndDelete(id);
+    const deletedReservation = await Reservation.findByIdAndDelete(req.body.res._id);
     if (!deletedReservation) {
       return res.status(404).json({ message: 'Reservation not found' });
     }

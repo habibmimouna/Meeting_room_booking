@@ -5,18 +5,19 @@ import { User } from '../../models/user';
 import { ReservationService } from '../../models/services/reservation.service';
 import { Reservation } from '../../models/reservation';
 import { NgFor } from '@angular/common';
+import { MeetingRoomService } from '../../models/services/meeting-room.service';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [NavbarComponent,NgFor],
+  imports: [NavbarComponent, NgFor],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
 })
 export class AccountComponent {
-  userReservations:Reservation[]=[]
+  userReservations: Reservation[] = [];
   user: User = {
-    _id: "",
+    _id: '',
     fullName: '',
     email: '',
     password: '',
@@ -27,12 +28,13 @@ export class AccountComponent {
 
   constructor(
     private userService: UserService,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private meetingRoomService:MeetingRoomService,
   ) {}
 
   ngOnInit(): void {
     this.getUserFromLocalStorage();
-    this.getUserReservations(this.user._id)
+    this.getUserReservations(this.user._id);
   }
 
   getUserFromLocalStorage(): void {
@@ -41,9 +43,7 @@ export class AccountComponent {
       try {
         const userObject: User = JSON.parse(currentUser);
         this.user = userObject;
-        this.user._id=userObject._id
-        
-        
+        this.user._id = userObject._id;
       } catch (error) {
         console.error('Error parsing currentUser JSON:', error);
       }
@@ -54,28 +54,34 @@ export class AccountComponent {
 
   async getUserReservations(userId: string): Promise<void> {
     try {
-      this.reservationService.getReservationList().subscribe((reservations: Reservation[]) => {
-        this.userReservations = reservations.filter(reservation => {
-          return reservation.user === userId || reservation.user === null;
+      this.reservationService
+        .getReservationList()
+        .subscribe((reservations: Reservation[]) => {
+          this.userReservations = reservations.filter((reservation) => {
+            return reservation.user === userId || reservation.user === null;
+          });
+          console.log('test', this.userReservations);
         });
-        console.log("test", this.userReservations);
-      });
     } catch (err) {
-      console.error("Error:", err);
+      console.error('Error:', err);
     }
   }
-  deleteReservation(reservation: Reservation): void {
-    try{
-    this.reservationService.deleteReservation(reservation._id).subscribe(() => {
-      console.log('Reservation deleted successfully.');
-    }, (error) => {
-      console.error('Error deleting reservation:', error);
-    });
-  }catch(err){
-    console.log("error :",err);
-    
-  }
-}
- 
-}
 
+
+  
+  deleteReservation(reservation: Reservation): void {
+    try {
+      this.reservationService.deleteReservation(reservation).subscribe(
+        () => {
+          console.log('Reservation deleted successfully.');
+          window.location.reload();        },
+        (error) => {
+          console.error('Error deleting reservation:', error);
+        }
+      );
+    } catch (err) {
+      console.log('error :', err);
+    }
+  }
+  
+}
