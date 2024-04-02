@@ -29,6 +29,7 @@ import { CustomCalendarComponent } from './component/custom-calendar/custom-cale
     HttpClientModule,
     FullCalendarModule,
     CustomCalendarComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

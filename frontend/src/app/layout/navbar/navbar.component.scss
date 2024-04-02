@@ -1,68 +1,84 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 5px;
-    background-color: rgba(165, 165, 165, 0.786);
-  }
-  
-  .navbar-brand {
-    font-size: 4vh;
-    color: white;
-    font-family: inter;
-    cursor: pointer;
-  
-  }
-  
-  .navbar-nav {
-    list-style: none;
-    padding: 0;
-    padding-top: 10px;
-    padding-right: 40px;
-    
-  }
-  
-  .nav-item {
-    display: inline-block;
-    margin-right: 15px;
-  
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-family: inter;
-    font-size: 3vh;
-    margin-left: 25px;
-    cursor: pointer;
-  
-  }
-  
-  .login-item {
-    display: inline-block;
-    width: 14vh;
-    height: 30px;
-    background-color: rgba(26, 26, 220, 0.768);
-    border-radius: 15px;
-    text-align: center;
-    margin-left: 25px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  
-  }
-  
-  .login-link {
-    color: white;
-    text-decoration: none;
-    font-family: inter;
-    font-size: 3vh;
-  
-  }
-  
-  .nav-link:hover {
-    color: #ddd;
-  }
-  
-  .active {
-    font-weight: bold;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 5px;
+  background-color: #5d5df061
+}
+
+.navbar-brand {
+  font-size: 4vh;
+  color: white;
+  font-family: inter;
+  cursor: pointer;
+
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  padding-top: 10px;
+  padding-right: 40px;
+
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 15px;
+
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-family: inter;
+  font-size: 3vh;
+  margin-left: 25px;
+  cursor: pointer;
+
+}
+
+.login-item {
+  display: inline-block;
+  text-align: center;
+  margin-left: 25px;
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+
+
+
+}
+
+.login-link {
+  color: white;
+  text-decoration: none;
+  font-family: inter;
+  font-size: 3vh;
+
+}
+
+.nav-link:hover {
+  color: #ddd;
+}
+
+.active {
+  font-weight: bold;
+}

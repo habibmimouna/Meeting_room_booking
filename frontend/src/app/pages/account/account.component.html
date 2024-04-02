@@ -1,22 +1,25 @@
 <div>
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
+  <div class="container">
     <div>
-      <p>Fullname: {{ user.fullName }}</p>
-      <p>username: {{ user.username }}</p>
-      <p>email: {{ user.email }}</p>
-      <p>phone: {{ user.phone }}</p>
-      <p>phone: {{ user._id }}</p>
+      <h3 class="details-header">Account details</h3>
+      <div class="Details">
+        <p>Fullname: {{ user.fullName }}</p>
+        <p>username: {{ user.username }}</p>
+        <p>email: {{ user.email }}</p>
+        <p>phone: {{ user.phone }}</p>
+      </div>
     </div>
     <div>
-      currently you have these reservations :
-      <table class="container">
+      <div class="table-main-header">currently you have these reservations :</div>
+      <table class="table-container">
         <thead>
           <tr>
-            <th><h1>Meeting room name</h1></th>
-            <th><h1>day of reservation</h1></th>
-            <th><h1>hours</h1></th>
-            <th><h1>purpose</h1></th>
-            <th><h1>Actions</h1></th>
+            <th><h4>Meeting room name</h4></th>
+            <th><h4>day of reservation</h4></th>
+            <th><h4>hours</h4></th>
+            <th><h4>purpose</h4></th>
+            <th><h4>Actions</h4></th>
           </tr>
         </thead>
         <tbody *ngFor="let userReservation of userReservations">
@@ -26,12 +29,20 @@
             <td>{{ userReservation.reservedHours }}</td>
             <td>{{ userReservation.purpose }}</td>
             <td>
-              <button (click)="deleteReservation(userReservation)">Delete</button>
-              <button>Modify</button>
+              <button (click)="deleteReservation(userReservation)" class="button">
+                Delete
+              </button>
+              <button (click)="openPopup(userReservation)" class="button">Modify</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  
+</div>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <app-modify-calendar  [modifiedreservation]="selectedReservation"></app-modify-calendar>
+  </div>
+</div>

@@ -2,22 +2,17 @@ import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ReservationService } from '../../models/services/reservation.service';
 import { Reservation } from '../../models/reservation';
-import { MeetingRoomService } from '../../models/services/meeting-room.service';
-import { MeetingRoom } from '../../models/meetingRoom';
+
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../../models/services/user.service';
-import { User } from '../../models/user';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'app-custom-calendar',
+  selector: 'app-modify-calendar',
   standalone: true,
   imports: [NgFor],
-  templateUrl: './custom-calendar.component.html',
-  styleUrl: './custom-calendar.component.scss',
+  templateUrl: './modify-calendar.component.html',
+  styleUrl: './modify-calendar.component.scss'
 })
-export class CustomCalendarComponent {
-  
+export class ModifyCalendarComponent {
   currentDate: Date = new Date();
   selectedYear: number = 0;
   selectedMonth: number = 0;
@@ -114,15 +109,17 @@ export class CustomCalendarComponent {
     this.reservation.day = this.selectedDay;
     this.route.params.subscribe((params) => {
       this.meetingRoomId = params['id'];
-      this.reservation.meetingRoom = params['id'];
+      this.reservation.meetingRoom = this.modifiedreservation.meetingRoom;
     });
     this.updateCheckedStatus();
     console.log('test:', this.reservation);
-    this.makeReservation();
+    console.log(this.reservation.meetingRoom);
+    
+    this.updateReservation(this.reservation);
     window.alert(
       'you have reserved successfully \nif you want to cancel or modify a reservation go to your account page '
     );
-    window.location.reload();
+    
 
   }
 
@@ -200,6 +197,10 @@ export class CustomCalendarComponent {
     }
   }
   updateReservation(reservation: Reservation): void {
+    console.log(reservation);
+    console.log(this.reservation);
+    
+    
     try {
       this.reservationService.updateReservation(reservation).subscribe(
         () => {
@@ -214,4 +215,5 @@ export class CustomCalendarComponent {
       console.log('error :', err);
     }
   }
+
 }

@@ -6,15 +6,27 @@ import { ReservationService } from '../../models/services/reservation.service';
 import { Reservation } from '../../models/reservation';
 import { NgFor } from '@angular/common';
 import { MeetingRoomService } from '../../models/services/meeting-room.service';
+import { CustomCalendarComponent } from '../../component/custom-calendar/custom-calendar.component';
+import { ModifyCalendarComponent } from '../../component/modify-calendar/modify-calendar.component';
+import { MeetingRoom } from '../../models/meetingRoom';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [NavbarComponent, NgFor],
+  imports: [NavbarComponent, NgFor,CustomCalendarComponent,ModifyCalendarComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
 })
 export class AccountComponent {
+  selectedReservation: Reservation ={
+    id: 0,
+    day: "",
+    reservedHours: [],
+    purpose: '',
+    meetingRoom: "",
+    user: "",
+  };
   userReservations: Reservation[] = [];
   user: User = {
     _id: '',
@@ -29,7 +41,8 @@ export class AccountComponent {
   constructor(
     private userService: UserService,
     private reservationService: ReservationService,
-    private meetingRoomService:MeetingRoomService,
+    private meetingRoomService: MeetingRoomService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -67,20 +80,57 @@ export class AccountComponent {
     }
   }
 
-
-  
   deleteReservation(reservation: Reservation): void {
     try {
       this.reservationService.deleteReservation(reservation).subscribe(
         () => {
           console.log('Reservation deleted successfully.');
-          window.location.reload();        },
+          window.location.reload();
+        },
         (error) => {
           console.error('Error deleting reservation:', error);
         }
       );
     } catch (err) {
       console.log('error :', err);
+    }
+  }
+
+
+  updateReservation(reservation: Reservation): void {
+    try {
+      this.reservationService.updateReservation(reservation).subscribe(
+        () => {
+          console.log('Reservation updated successfully.');
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Error updating reservation:', error);
+        }
+      );
+    } catch (err) {
+      console.log('error :', err);
+    }
+  }
+  openPopup(reservation: Reservation): void {
+    this.selectedReservation = reservation;
+    const modal = document.getElementById('myModal');
+    if (modal) {
+      modal.style.display = 'block';
+    }
+  }
+  closePopup(): void {
+    this.selectedReservation = {
+      id: 0,
+    day: "",
+    reservedHours: [],
+    purpose: '',
+    meetingRoom: "",
+    user: "",
+    };
+    const modal = document.getElementById('myModal');
+    if (modal) {
+      modal.style.display = 'none';
     }
   }
   

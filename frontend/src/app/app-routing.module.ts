@@ -10,21 +10,27 @@ import { meetingRoomListComponent } from './pages/meetingroom-list/meetingroom-l
 import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
-    { path: 'auth/signup', component: RegisterComponent },
-    { path: 'auth/login', component: LoginComponent},
-    { path: 'dash', component: DashComponent,canActivate: [authGuard]},
-    { path: 'meetingroom-list', component: meetingRoomListComponent,canActivate: [authGuard]},
-    { path: 'Admin-meetingroom-list', component: meetingRoomListAdminComponent,canActivate: [authGuard]},
-    { path: 'reservation/:id', component: ReservationComponent },
-    { path: 'Account', component: AccountComponent,canActivate: [authGuard]},
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: 'auth/signup', component: RegisterComponent },
+  { path: 'auth/login', component: LoginComponent },
+  { path: 'dash', component: DashComponent, canActivate: [authGuard] },
+  {
+    path: 'meetingroom-list',
+    component: meetingRoomListComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'Admin-meetingroom-list',
+    component: meetingRoomListAdminComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'reservation/:id', component: ReservationComponent },
 
-
-
+  { path: 'Account', component: AccountComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
