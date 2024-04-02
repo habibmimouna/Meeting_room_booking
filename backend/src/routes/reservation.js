@@ -9,7 +9,7 @@ const {
 } = require("../controllers/reservationController");
 
 router.post("/reservations", authenticate, createReservation);
-router.put("/reservation", authenticate, updateReservation);
+router.put("/reservations", updateReservation);
 router.get("/reservations", getAllReservations);
 router.delete("/reservations",deleteReservation)
 

@@ -22,9 +22,9 @@ const getAllReservations = async (req, res) => {
 
 
 const updateReservation = async (req, res) => {
-  const { id } = req.params;
+  console.log(req.body);
   try {
-    const updatedReservation = await Reservation.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedReservation = await Reservation.findByIdAndUpdate(req.body._id, req.body, { new: true });
     if (!updatedReservation) {
       return res.status(404).json({ message: 'Reservation not found' });
     }
