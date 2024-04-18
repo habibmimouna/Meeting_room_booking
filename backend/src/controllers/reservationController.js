@@ -1,5 +1,4 @@
-const Reservation = require('../models/Reservation');
-
+const Reservation = require("../models/Reservation");
 
 const createReservation = async (req, res) => {
   try {
@@ -10,7 +9,6 @@ const createReservation = async (req, res) => {
   }
 };
 
-
 const getAllReservations = async (req, res) => {
   try {
     const reservations = await Reservation.find();
@@ -20,13 +18,16 @@ const getAllReservations = async (req, res) => {
   }
 };
 
-
 const updateReservation = async (req, res) => {
   console.log(req.body);
   try {
-    const updatedReservation = await Reservation.findByIdAndUpdate(req.body._id, req.body, { new: true });
+    const updatedReservation = await Reservation.findByIdAndUpdate(
+      req.body.id,
+      req.body,
+      { new: true }
+    );
     if (!updatedReservation) {
-      return res.status(404).json({ message: 'Reservation not found' });
+      return res.status(404).json({ message: "Reservation not found" });
     }
     res.json(updatedReservation);
   } catch (error) {
@@ -34,24 +35,24 @@ const updateReservation = async (req, res) => {
   }
 };
 
-
 const deleteReservation = async (req, res) => {
- 
   try {
-    const deletedReservation = await Reservation.findByIdAndDelete(req.body.res._id);
+    const deletedReservation = await Reservation.findByIdAndDelete(
+      req.body.res._id
+    );
     if (!deletedReservation) {
-      return res.status(404).json({ message: 'Reservation not found' });
+      return res.status(404).json({ message: "Reservation not found" });
     }
-    res.json({ message: 'Reservation deleted successfully' });
+    res.json({ message: "Reservation deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
+
 module.exports = {
   createReservation,
   getAllReservations,
   updateReservation,
-  deleteReservation
-  
+  deleteReservation,
 };
