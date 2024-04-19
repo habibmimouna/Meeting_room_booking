@@ -13,7 +13,7 @@ const {
 router.get("/meeting-rooms", getAllMeetingRooms);
 router.get("/meeting-rooms/:id", getMeetingRoomById);
 router.post("/meeting-rooms",authenticate ,createMeetingRoom);
-router.put("/meeting-rooms", authenticate, updateMeetingRoom);
+router.put("/meeting-room/:id", authenticate, updateMeetingRoom);
 router.get("/meeting-rooms/getAvailebleHours/:id/:day",getAvailableHoursForDay)
 
 

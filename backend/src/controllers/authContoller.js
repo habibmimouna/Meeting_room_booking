@@ -41,9 +41,22 @@ const getAllUsers = async (req, res) => {
     res.status(400).send(err.message);
   }
 };
+const getUserById = async (id, res) => {
+  try {
+    const user = await User.findOne({ _id: id }); 
+    console.log("fetched user:",user);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
 
 module.exports = {
   register,
   login,
   getAllUsers,
+  getUserById,
 };
